@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{%load static %}
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>EXPENZO</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href="{% static 'css/complaint.css' %}">
+
+</head>
+<body>
+<div class="container">
+    <header class="header">
+        <a class="header__logo">EXPENZO</a>
+        <nav class="header__menu">
+            <ul class="header__menu__list">
+                <li class="header__menu__item"><a class="header__menu__link">user</a></li>
+                <li class="header__menu__item"><a class="header__menu__link">feedback</a></li>
+                <li class="header__menu__item"><a class="header__menu__link">complaints</a></li>
+                <li class="header__menu__item"><a class="header__menu__link">logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="sliders-container">
+        <ul class="pagination">
+            <li class="pagination__item"><a class="pagination__button"></a></li>
+            <li class="pagination__item"><a class="pagination__button"></a></li>
+            <li class="pagination__item"><a class="pagination__button"></a></li>
+            <li class="pagination__item"><a class="pagination__button"></a></li>
+        </ul>
+    </main>
+    <footer class="footer">
+        <nav class="footer__menu">
+            <ul class="footer__menu__list">
+                <li class="footer__menu__item"><a class="footer__menu__link">facebook</a></li>
+                <li class="footer__menu__item"><a class="footer__menu__link">dribbble</a></li>
+                <li class="footer__menu__item"><a class="footer__menu__link">instagram</a></li>
+            </ul>
+        </nav>
+    </footer>
+</div>
+  <script src='https://rawgit.com/lmgonzalves/momentum-slider/master/dist/momentum-slider.min.js'></script>
+  <script  src="{% static 'js/dash.js' %}"></script>
+
+</body>
+</html>
+            

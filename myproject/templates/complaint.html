@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complaints</title>
+    <link rel="stylesheet" href="{% static 'css/complaint.css' %}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+<body>
+    {% for i in c %}
+    <div class="container">
+    <form action=""><h4>Complaints and Feedback</h4>
+        <label for="">complaint</label>
+        <input type="text" value="{{i.Complaint}}">
+<textarea id="text" placeholder="write your reply">
+</textarea>
+<button><i class='bx bx-send' ></i></button>
+    </form>
+</div>
+{% endfor %}
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head><link rel="stylesheet" href="{% static 'css/reply.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complaint view</title>
+</head>
+<body>
+    <div class="container">
+
+<form action=" ">
+
+    <table>
+        <tr><th>ID</th>
+            <th>Name</th>
+            <th>Complaints & Feedback</th>
+            <th>Action</th>
+        </tr>
+        {% for i in c%}
+<tr>
+    <td>{{i.id}}</td>
+    <td>{{i.Complaint}}</td>
+    <td>{{i.Reply}}</td>
+    <td><button class="btn">Reply</button>
+       </td>
+    </tr>
+    {% endfor %}
+    
+    </table>
+</form>
+
+
+
+    </div>
+</body>
+</html>

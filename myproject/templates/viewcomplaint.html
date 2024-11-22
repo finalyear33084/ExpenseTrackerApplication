@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <th>id</th>
+            <th>complaint</th>
+            <th>reply</th>
+            <th></th>
+        </tr>
+        {% for i in c %}
+        <tr>
+            <td>{{i.id}}</td>
+            <td>{{i.Complaint}}</td>
+            <td>{{i.Reply}}</td>
+            <td><a href=""><button>Reply</button></a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+</body>
+</html>

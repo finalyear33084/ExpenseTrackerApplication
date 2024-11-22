@@ -1,0 +1,34 @@
+{% load static %}
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#1885ed">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/hlogin.css' %}">
+
+    <title> LoginPage </title>
+</head>
+
+<body>
+<!--ring div starts here-->
+<div class="ring">
+  <i style="--clr:#010c01;"></i>
+  <i style="--clr:#ede5e7;"></i>
+  <i style="--clr:#807f75;"></i>
+  <div class="login">
+    <h2>Login</h2>
+    <div class="inputBx">
+      <input type="text" placeholder="Username/E-mail">
+    </div>
+    <div class="inputBx">
+      <input type="password" placeholder="Password">
+    </div>
+    <div class="inputBx">
+      <input type="submit" value="Sign in">
+    </div>
+    
+  </div>
+</div>
+<!--ring div ends here-->
+</body>   
+</html>         
