@@ -6,6 +6,7 @@ class LoginTable(models.Model):
     Username = models.CharField(max_length=30, null=True, blank=True)
     Password = models.CharField(max_length=30, null=True, blank=True)
     Type = models.CharField(max_length=30, null=True, blank=True)
+    status=models.CharField(max_length=30, null=True, blank=True,default='REJECT')
 
 class UserTable(models.Model):
     LOGIN = models.ForeignKey(LoginTable, on_delete=models.CASCADE)
@@ -42,8 +43,4 @@ class IncomeExpenseTable(models.Model):
     
 
 
-
-
-
-    
-    
+   

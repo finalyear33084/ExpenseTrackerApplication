@@ -14,18 +14,18 @@
     <table>
         <tr><th>ID</th>
             <th>Name</th>
-            <th>Complaints</th>
-            <th>Reply</th>
-            <th>Action</th>
+            <th>Feedback</th>
+            <th>Rating</th>
+            <th>Date</th>
         </tr>
         {% for i in c%}
 <tr>
     <td>{{i.id}}</td>
     <td>{{i.USER.Name}}</td>
-    <td>{{i.Complaint}}</td>
-    <td>{{i.Reply}}</td>
-    <td><a href="complaint/{{i.id}}/"><button class="btn">Reply</button></a>
-       </td>
+    <td>{{i.Feedback}}</td>
+    <td>{{i.Rating}}</td>
+    <td>{{i.Date}}</td>
+
     </tr>
     {% endfor %}
     

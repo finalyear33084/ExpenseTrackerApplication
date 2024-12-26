@@ -22,9 +22,9 @@
 <tr>
     <td>{{i.id}}</td>
     <td>{{i.Email}}</td>
-    <td>{{i.name}}</td>
-<td><button class="btn">accept</button>
-    <button class="btn">reject</button></td>
+    <td>{{i.Name}}</td>
+<td><a href="AcceptUser/{{i.id}}"><button class="btn">accept</button></a>
+    <a href="RejectUser/{{i.id}}"> <button class="btn">reject</button> </a></td>
 </tr>
 {% endfor %}
 
