@@ -13,5 +13,17 @@ urlpatterns = [
     path('AcceptUser/<int:id>',AcceptUser.as_view(),name='AcceptUser'),
     path('RejectUser/<int:id>',RejectUser.as_view(),name='RejectUser'),
 
+    # ///////////////////////////////   API /////////////////////////////////
+
+    path('UserReg', UserReg.as_view(), name="UserReg"),
+    path('ViewProfileApi', ViewProfileApi.as_view(), name="ViewProfileApi"),
+    path('ViewFeedbackApi', ViewFeedbackApi.as_view(), name="ViewFeedbackApi"),
+    path('ViewComplaintApi', ViewComplaintApi.as_view(), name="ViewComplaintApi"),
+    path('ViewBudgetApi', ViewBudgetApi.as_view(), name="ViewBudgetApi"),
+    path('ViewIncomeApi', ViewIncomeApi.as_view(), name="ViewIncomeApi"),
+    path('ViewTransactionApi', ViewTransactionApi.as_view(), name="ViewTransactionApi"),
+
+
+
    
 ]

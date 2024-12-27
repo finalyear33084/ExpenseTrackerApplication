@@ -40,7 +40,13 @@ class IncomeExpenseTable(models.Model):
     Expense = models.FloatField(null=True, blank=True)
     Balance = models.FloatField(null=True, blank=True)
 
-    
+class TransactionTable(models.Model):
+    sender_id=models.ForeignKey(UserTable, on_delete=models.CASCADE, related_name='sender')
+    receiver_id = models.ForeignKey(UserTable, on_delete=models.CASCADE, related_name='receiver')
+    Date = models.DateTimeField(null=True, blank=True)
+    Amount=models.FloatField(null=True, blank=True)
+
+
 
 
    
