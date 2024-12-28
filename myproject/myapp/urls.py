@@ -2,7 +2,6 @@ from django.urls import path
 
 from myapp.views import *
 
-
 urlpatterns = [
     path('', LoginPage.as_view(), name="login"),
     path('dash', Dash.as_view(), name="dash"),
@@ -16,13 +15,16 @@ urlpatterns = [
     # ///////////////////////////////   API /////////////////////////////////
 
     path('UserReg', UserReg.as_view(), name="UserReg"),
-    path('ViewProfileApi', ViewProfileApi.as_view(), name="ViewProfileApi"),
+    path('UserUpdation/<int:id>',UserUpdation.as_view(),name='UserUpdation'),
+    path('UserUpdatepassword/<int:id>',UserUpdatepassword.as_view(),name="UserUpdatepassword"),
+    path('LoginPage/',LoginPage.as_view(),name="LoginPage"),
+    path('ViewProfileApi/<int:id>', ViewProfileApi.as_view(), name="ViewProfileApi"),
     path('ViewFeedbackApi', ViewFeedbackApi.as_view(), name="ViewFeedbackApi"),
     path('ViewComplaintApi', ViewComplaintApi.as_view(), name="ViewComplaintApi"),
     path('ViewBudgetApi', ViewBudgetApi.as_view(), name="ViewBudgetApi"),
     path('ViewIncomeApi', ViewIncomeApi.as_view(), name="ViewIncomeApi"),
     path('ViewTransactionApi', ViewTransactionApi.as_view(), name="ViewTransactionApi"),
-
+    path('ViewTransactionOfUser',ViewTransactionOfUser.as_view(), name="ViewTransactionOfUser"),
 
 
    

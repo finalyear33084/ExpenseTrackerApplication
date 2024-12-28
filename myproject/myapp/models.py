@@ -10,9 +10,12 @@ class LoginTable(models.Model):
 
 class UserTable(models.Model):
     LOGIN = models.ForeignKey(LoginTable, on_delete=models.CASCADE)
-    Name = models.CharField(max_length=30, null=True, blank=True)
-    Email = models.CharField(max_length=30, null=True, blank=True)
+    Name = models.CharField(max_length=100, null=True, blank=True)
+    Email = models.CharField(max_length=100, null=True, blank=True)
     PhoneNumber = models.IntegerField( null=True, blank=True)
+    Address = models.CharField(max_length=100, null=True, blank=True)
+    Totalincome = models.CharField(max_length=100, null=True, blank=True)
+
 
 class FeedbackTable(models.Model):
     USER = models.ForeignKey(UserTable, on_delete=models.CASCADE)

@@ -5,8 +5,20 @@ from myapp.models import *
 class ProfileSerializer(ModelSerializer):
     class Meta:
         model = UserTable
-        fields =['Name','Email','PhoneNumber']
+        fields =['Name','Email','PhoneNumber','Address','Totalincome']
 
+class LoginSerializer(ModelSerializer):
+    class Meta:
+        model= LoginTable
+        fields=['Username','Password']
+class UpdateProfileSerializer(ModelSerializer):
+    class Meta:
+        model = UserTable
+        fields =[['Name','Email','PhoneNumber','Address','Totalincome']]
+class UpdateProfilepasswordSerializer(ModelSerializer):
+    class Meta:
+        model = LoginTable
+        fields =['password']
 class FeedbackViewSerializer(ModelSerializer):
     class Meta:
         model= FeedbackTable
@@ -27,10 +39,6 @@ class IncomeViewSerializer(ModelSerializer):
         model= IncomeExpenseTable
         fields=['USER','BUDGET','Date','Income','Expense','Balance']
 
-class LoginSerializer(ModelSerializer):
-    class Meta:
-        model= LoginTable
-        fields=['Username','Password']
 
 class TransactionViewSerializer(ModelSerializer):
     class Meta:
