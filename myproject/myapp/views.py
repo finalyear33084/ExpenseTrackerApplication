@@ -61,14 +61,16 @@ class ViewUser(View):
     
 class AcceptUser(View):
     def get(self, request,id):
-        c=UserTable.objects.get(id=id)
-        c.LOGIN.status='ACCEPT'
-        return render(request, "user.html",{'c':c})
+        c=LoginTable.objects.get(id=id)
+        c.status='ACCEPT'
+        c.save()
+        return HttpResponse('''<script>alert("accepted"); window.location="/view_user";</script>''')
 class RejectUser(View):
     def get(self, request,id):
-        c=UserTable.objects.get(id=id)
-        c.LOGIN.status='REJECT'
-        return render(request, "user.html",{'c':c})
+        c=LoginTable.objects.get(id=id)
+        c.status='REJECT'
+        c.save()
+        return HttpResponse('''<script>alert("rejected"); window.location="/view_user";</script>''')
     
     
 class ViewFeedback(View):
@@ -96,6 +98,9 @@ class UserReg(APIView):
         return Response({'login_error':login_serial.errors if not login_valid else None, 
                          'user_error': user_serial.errors if not data_valid else None }, status=status.HTTP_400_BAD_REQUEST )
 from rest_framework.exceptions import NotFound
+
+
+
 class UserUpdation(APIView):
     def put(self, request, pk):
         try:
@@ -107,7 +112,7 @@ class UserUpdation(APIView):
         # Serialize the incoming data
         user_serial = UpdateProfileSerializer(user_instance, data=request.data, partial=True)
         
-        
+
 
         user_valid = user_serial.is_valid()
     
@@ -146,7 +151,7 @@ class UserUpdatepassword(APIView):
         }, status=status.HTTP_400_BAD_REQUEST)
     
 
-class LoginPage(APIView):
+class LoginPageApi(APIView):
     permission_classes=[AllowAny]
     def post(self, request):
         response_dict = {}
@@ -180,7 +185,7 @@ class LoginPage(APIView):
 
         return Response(response_dict, status=status.HTTP_200_OK)
     
-
+     
 class ViewProfileApi(APIView):
     def get(self,request,id):
         profile =UserTable.objects.filter(LOGIN__id=id).first()
@@ -188,7 +193,6 @@ class ViewProfileApi(APIView):
         print("----------> profile",profile_serializer)
         return Response(profile_serializer.data)
     
-
 class ViewFeedbackApi(APIView):
     def get(self,request):
         feedback =FeedbackTable.objects.all()
@@ -196,8 +200,6 @@ class ViewFeedbackApi(APIView):
         print("----------> feedback",feedback_serializer)
         return Response(feedback_serializer.data)
     
-
-
 class ViewComplaintApi(APIView):
     def get(self,request):
         complaint =ComplaintTable.objects.all()
