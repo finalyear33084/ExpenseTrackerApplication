@@ -102,15 +102,16 @@ from rest_framework.exceptions import NotFound
 
 
 class UserUpdation(APIView):
-    def put(self, request, pk):
+    def put(self, request, id):
+        print(id)
         try:
             # Retrieve the existing user profile
-            user_instance = UserTable.objects.get(LOGIN__id=pk)
+            user_instance = UserTable.objects.get(LOGIN__id=id)
         except UserTable.DoesNotExist:
             raise NotFound("User not found.")
-
+        print(request.data)
         # Serialize the incoming data
-        user_serial = UpdateProfileSerializer(user_instance, data=request.data, partial=True)
+        user_serial = UpdateProfileSerializer(user_instance, data=request.data)
         
 
 
@@ -193,12 +194,7 @@ class ViewProfileApi(APIView):
         print("----------> profile",profile_serializer)
         return Response(profile_serializer.data)
     
-class ViewFeedbackApi(APIView):
-    def get(self,request):
-        feedback =FeedbackTable.objects.all()
-        feedback_serializer = FeedbackViewSerializer(feedback,many=True)
-        print("----------> feedback",feedback_serializer)
-        return Response(feedback_serializer.data)
+
     
 class ViewComplaintApi(APIView):
     def get(self,request):
@@ -227,8 +223,51 @@ class ViewIncomeApi(APIView):
     def get(self,request):
         income =IncomeExpenseTable.objects.all()
         income_serializer = IncomeViewSerializer(income,many=True)
-        print("----------> income",income_serializer)
+        print("----------> income",income_serializer) 
         return Response(income_serializer.data)
+    def post(self, request):
+        print(request.data)
+        data = request.data
+
+        # Extract the main fields from the request
+        user_id = data.get('USER')
+        user_id=UserTable.objects.filter(LOGIN__id=user_id).first().id
+        # budget_id = data.get('BUDGET')
+        items = data.get('items', [])
+
+        if not user_id or not items:
+            return Response({"error": "USER, BUDGET, and items are required fields."}, status=status.HTTP_400_BAD_REQUEST)
+
+        created_items = []
+
+        for item in items:
+            category = item.get('Category')
+            quantity = item.get('Quantity')
+            price = item.get('Price')
+
+            # Validate each item's fields
+            if not all([category, quantity, price]):
+                return Response({"error": "Each item must include Category, Quantity, and Price."},
+                                status=status.HTTP_400_BAD_REQUEST)
+
+            # Create a record in the database
+            record_data = {
+                "USER": user_id,
+                # "BUDGET_id": budget_id,
+                "Category": category,
+                "Quantity": quantity,
+                "Price": price,
+            }
+            
+            serializer = IncomeViewSerializer(data=record_data)
+        
+            if serializer.is_valid():
+                serializer.save()
+                created_items.append(serializer.data)
+            else:
+                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+        return Response({"message": "Items created successfully.", "items": created_items}, status=status.HTTP_201_CREATED)
 
 class ViewTransactionApi(APIView):
     def get(self,request):
@@ -247,8 +286,8 @@ class ViewTransactionApi(APIView):
     
 class ViewTransactionOfUser(APIView):
     def get(self,request,id):
-
-        transaction = TransactionTable.objects.filter(Q(sender_id__id=id) | Q(reciever_id__id=id)).all()
+        user_id=UserTable.objects.filter(LOGIN__id=id).first()
+        transaction = TransactionTable.objects.filter(Q(sender_id__id=user_id.id) | Q(reciever_id__id=user_id.id)).all()
         transaction_serializer = TransactionViewSerializer(transaction,many=True)
         print("----------> transaction",transaction_serializer)
         return Response(transaction_serializer.data)

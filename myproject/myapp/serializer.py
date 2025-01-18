@@ -14,15 +14,11 @@ class LoginSerializer(ModelSerializer):
 class UpdateProfileSerializer(ModelSerializer):
     class Meta:
         model = UserTable
-        fields =[['Name','Email','PhoneNumber','Address','Totalincome']]
+        fields =['Name','Email','PhoneNumber','Address','Totalincome']
 class UpdateProfilepasswordSerializer(ModelSerializer):
     class Meta:
         model = LoginTable
         fields =['password']
-class FeedbackViewSerializer(ModelSerializer):
-    class Meta:
-        model= FeedbackTable
-        fields=['USER','Feedback','Rating','Date']
 
 class ComplaintViewSerializer(ModelSerializer):
     class Meta:
@@ -37,10 +33,15 @@ class BudgetViewSerializer(ModelSerializer):
 class IncomeViewSerializer(ModelSerializer):
     class Meta:
         model= IncomeExpenseTable
-        fields=['USER','BUDGET','Date','Income','Expense','Balance']
+        fields=['USER','Category','Quantity','Price']
 
 
 class TransactionViewSerializer(ModelSerializer):
     class Meta:
         model= TransactionTable
         fields=['sender_id','receiver_id','Date','Amount']
+
+class NotificationTableSerializer(ModelSerializer):
+    class Meta:
+        model=NotificationTable
+        fields=['user_id','notification','notification_date']
