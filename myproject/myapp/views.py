@@ -73,10 +73,10 @@ class RejectUser(View):
         return HttpResponse('''<script>alert("rejected"); window.location="/view_user";</script>''')
     
     
-class ViewFeedback(View):
-    def get(self, request):
-        c=FeedbackTable.objects.all()
-        return render(request, "feedback.html",{'c':c})  
+# class ViewFeedback(View):
+#     def get(self, request):
+#         c=FeedbackTable.objects.all()
+#         return render(request, "feedback.html",{'c':c})  
     
 
 # ///////////////////////////////// API //////////////////////////////
