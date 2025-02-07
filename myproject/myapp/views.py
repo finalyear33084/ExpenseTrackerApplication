@@ -24,9 +24,14 @@ class LoginPage(View):
     def post(self,request):
         username=request.POST['username']
         password=request.POST['password']
-        login_obj=LoginTable.objects.get(Username=username, Password=password)
-        if login_obj.Type=="admin":
-            return HttpResponse('''<script>alert("welcome"); window.location="/dash";</script>''')
+        try:
+            login_obj=LoginTable.objects.get(Username=username, Password=password,status='ACCEPT')
+            if login_obj.Type=="admin":
+             return HttpResponse('''<script>alert("welcome"); window.location="/dash";</script>''')
+        except:
+            return HttpResponse('''<script>alert("invalid user "); window.location="/";</script>''')
+        
+
         
 
     

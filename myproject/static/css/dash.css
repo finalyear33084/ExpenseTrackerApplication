@@ -49,18 +49,18 @@ h1, h2, h3 {
   left: -70px;
 }
 .ms--images .ms-slide:nth-child(1) .ms-slide__image {
-background-image: url("C:\Users\vavag\OneDrive\Desktop\djangoprojects\sample\myproject\static\images\expense.jpg");}
+background-image: url("expense.jpg");}
 .ms--images .ms-slide:nth-child(2) .ms-slide__image {
-background-image: url("C:\Users\vavag\OneDrive\Desktop\djangoprojects\sample\myproject\static\images\chart.jpg");}
+background-image: url("chart.jpg");}
 .ms--images .ms-slide:nth-child(3) .ms-slide__image {
-background-image: url("C:\Users\vavag\OneDrive\Desktop\djangoprojects\sample\myproject\static\images\chatbot.jpg");}
+background-image: url("chatbot.jpg");}
 .ms--images .ms-slide:nth-child(4) .ms-slide__image {
-background-image: url("C:\Users\vavag\OneDrive\Desktop\djangoprojects\sample\myproject\static\images\ui.jpg");
+background-image: url("ui.jpg");
 }
 .ms--images .ms-slide__image-container {
   width: 80%;
   height: 80%;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(198, 0, 0, 0.3);
   overflow: hidden;
 }
 .ms--images .ms-slide__image {

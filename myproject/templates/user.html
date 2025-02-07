@@ -14,6 +14,8 @@
     <th>Id</th>
     <th>E-mail</th>
     <th>Name</th>
+    <th>Phone-number</th>
+    <th>Address</th>
     <th>Action</th>
     
 </tr>
@@ -23,8 +25,10 @@
     <td>{{i.id}}</td>
     <td>{{i.Email}}</td>
     <td>{{i.Name}}</td>
+    <td>{{i.PhoneNumber}}</td>
+    <td>{{i.Address}}</td>
 <td>
-    {% if i.LOGIN.status == "pending" %}
+    {% if i.LOGIN.status == "PENDING" %}
     <a href="AcceptUser/{{i.LOGIN.id}}"><button class="btn">accept</button></a>
     <a href="RejectUser/{{i.LOGIN.id}}"> <button class="btn">reject</button> </a>
     {% elif i.LOGIN.status == "ACCEPT" %}
