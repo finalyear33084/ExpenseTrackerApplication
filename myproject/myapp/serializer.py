@@ -2,6 +2,15 @@ from rest_framework.serializers import ModelSerializer
 
 from myapp.models import *
 
+from myapp.models import IncomeExpenseTable
+
+from myapp.models import ComplaintTable
+
+from myapp.models import NotificationTable
+
+from myapp.models import UserTable
+
+
 class ProfileSerializer(ModelSerializer):
     class Meta:
         model = UserTable
@@ -10,7 +19,7 @@ class ProfileSerializer(ModelSerializer):
 class LoginSerializer(ModelSerializer):
     class Meta:
         model= LoginTable
-        fields=['Username','Password']
+        fields=['Username','Password','Type','status']
 class UpdateProfileSerializer(ModelSerializer):
     class Meta:
         model = UserTable
@@ -33,15 +42,18 @@ class BudgetViewSerializer(ModelSerializer):
 class IncomeViewSerializer(ModelSerializer):
     class Meta:
         model= IncomeExpenseTable
-        fields=['USER','Category','Quantity','Price']
+        fields=['USER','Category','Quantity','Price','total_expense']
 
 
 class TransactionViewSerializer(ModelSerializer):
     class Meta:
-        model= TransactionTable
-        fields=['sender_id','receiver_id','Date','Amount']
+        model= IncomeExpenseTable
+        fields=['Date','Category','Quantity','Price']
 
-class NotificationTableSerializer(ModelSerializer):
+
+
+class NotificationSerializer(ModelSerializer):
     class Meta:
-        model=NotificationTable
-        fields=['user_id','notification','notification_date']
+        model = NotificationTable
+        fields = ['user_id', 'notification', 'notification_date']
+

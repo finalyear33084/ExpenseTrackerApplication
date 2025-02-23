@@ -25,7 +25,7 @@ urlpatterns = [
     path('ViewIncomeApi', ViewIncomeApi.as_view(), name="ViewIncomeApi"),
     path('ViewTransactionApi', ViewTransactionApi.as_view(), name="ViewTransactionApi"),
     path('ViewTransactionOfUser/<int:id>',ViewTransactionOfUser.as_view(), name="ViewTransactionOfUser"),
-
+    path('Viewnotifi/<int:user_id>',ViewNotificationApi.as_view(), name="Viewnotifi"),
 
    
 ]

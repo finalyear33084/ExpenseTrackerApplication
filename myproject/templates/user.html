@@ -1,47 +1,129 @@
-{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="{% static 'css/user.css' %}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>user</title>
+    <title>User Data</title>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align content to the top */
+            color: white;
+            background-color: #1B1C21;
+            overflow-y: auto; /* Enable scrolling */
+            height: auto;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start; /* Align content at the top */
+            min-height: 100vh; /* Allow content to grow */
+            width: 90%;
+            max-width: 1200px; /* Keep a max-width for better readability */
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.1);
+           
+        }
+
+        .container:before {
+            content: "";
+            position: absolute;
+            left: -150%;
+            top: 0;
+            width: 300%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.3);
+            transform: rotate(45deg);
+            z-index: -1;
+        }
+
+        /* Table Styling */
+        table {
+            background-color: transparent;
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            text-align: center;
+            border: 1px solid white;
+            padding: 10px;
+            color: white;
+        }
+
+        th {
+            background-color: rgba(255, 255, 255, 0.2); /* Slight contrast */
+        }
+
+        /* Button Styling */
+        .btn {
+            background-color: transparent;
+            border: 1px solid white;
+            color: white;
+            padding: 10px 20px;
+            margin-top: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: white;
+            color: rgb(17, 17, 17);
+        }
+    </style>
 </head>
 <body>
-   <div class="container"> <table > <h1 style="text-align: center;">Data</h1>
 
-<tr>
-    <th>Id</th>
-    <th>E-mail</th>
-    <th>Name</th>
-    <th>Phone-number</th>
-    <th>Address</th>
-    <th>Action</th>
-    
-</tr>
-{% for i in c %}
+    <div class="container">
+        <h1 style="text-align: center;">User Data</h1>
 
-<tr>
-    <td>{{i.id}}</td>
-    <td>{{i.Email}}</td>
-    <td>{{i.Name}}</td>
-    <td>{{i.PhoneNumber}}</td>
-    <td>{{i.Address}}</td>
-<td>
-    {% if i.LOGIN.status == "PENDING" %}
-    <a href="AcceptUser/{{i.LOGIN.id}}"><button class="btn">accept</button></a>
-    <a href="RejectUser/{{i.LOGIN.id}}"> <button class="btn">reject</button> </a>
-    {% elif i.LOGIN.status == "ACCEPT" %}
-    <p>Accepted</p>
-    {% elif i.LOGIN.status == "REJECT" %}
-    <p>Rejected</p>
-    {% endif %}
-</td>
-</tr>
-{% endfor %}
+        <table>
+            <tr>
+                <th>Id</th>
+                <th>E-mail</th>
+                <th>Name</th>
+                <th>Phone-number</th>
+                <th>Address</th>
+                <th>Action</th>
+            </tr>
+            {% for i in c %}
+            <tr>
+                <td>{{ i.id }}</td>
+                <td>{{ i.Email }}</td>
+                <td>{{ i.Name }}</td>
+                <td>{{ i.PhoneNumber }}</td>
+                <td>{{ i.Address }}</td>
+                <td>
+                    {% if i.LOGIN.status == "PENDING" %}
+                        <a href="AcceptUser/{{ i.LOGIN.id }}"><button class="btn">Accept</button></a>
+                        <a href="RejectUser/{{ i.LOGIN.id }}"><button class="btn">Reject</button></a>
+                    {% elif i.LOGIN.status == "ACCEPT" %}
+                        <p>Accepted</p>
+                        <a href="RejectUser/{{ i.LOGIN.id }}"><button class="btn">Reject</button></a>
+                    {% elif i.LOGIN.status == "REJECT" %}
+                        <p>Rejected</p>
+                        <a href="AcceptUser/{{ i.LOGIN.id }}"><button class="btn">Accept</button></a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
 
-
-    </table>
-</div>
 </body>
 </html>

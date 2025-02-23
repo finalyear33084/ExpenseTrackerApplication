@@ -1,27 +1,33 @@
-*{
-    padding: 0%;
-    margin: 0%;
+* {
+    padding: 0;
+    margin: 0;
     box-sizing: border-box;
 }
+
 body {
     display: flex;
     justify-content: center;
-    align-items: center; /* Center content both horizontally and vertically */
+    align-items: flex-start; /* Align content to the top */
     color: white;
     background-color: #1B1C21;
-    overflow: hidden;
-    height: 100vh; /* Ensure body takes full viewport height */
-    margin: 0; /* Reset margin to prevent unwanted spacing */
+    overflow-y: auto; /* Allow vertical scrolling */
+    height: auto;
+    min-height: 100vh;
+    margin: 0;
 }
-.container{
+
+.container {
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; /* Center content vertically */
-    min-height: 100vh; /* Take full viewport height */
+    justify-content: flex-start; /* Align content to the top */
+    min-height: 100vh; /* Allow the content to grow */
+    width: 100%;
+    padding: 20px; /* Add some spacing */
     background-color: rgba(0, 0, 0, 0.1);
 }
+
 .container:before {
     content: " ";
     position: absolute;
@@ -32,21 +38,32 @@ body {
     background-color: rgba(0, 0, 0, 0.3);
     transform: rotate(45deg);
     z-index: -1;
-  } 
+}
 
-#text{
+#text {
     background-color: transparent;
     color: white;
 }
-#text::placeholder{
+
+#text::placeholder {
     color: white;
 }
-button{
-    background-color:transparent;
+
+button {
+    background-color: transparent;
     border: 1px solid white;
     color: white;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
 }
-button:hover{
+
+button:hover {
     background-color: white;
     color: rgb(17, 17, 17);
+}
+
+/* Ensure there's enough content to make scrolling visible */
+.extra-content {
+    height: 150vh; /* Adds extra space to allow scrolling */
 }

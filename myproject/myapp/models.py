@@ -14,7 +14,7 @@ class UserTable(models.Model):
     Email = models.CharField(max_length=100, null=True, blank=True)
     PhoneNumber = models.IntegerField( null=True, blank=True)
     Address = models.CharField(max_length=100, null=True, blank=True)
-    Totalincome = models.CharField(max_length=100, null=True, blank=True)
+    Totalincome = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
 
 
 
@@ -34,13 +34,11 @@ class BudgetTable(models.Model):
 class IncomeExpenseTable(models.Model):
     USER = models.ForeignKey(UserTable, on_delete=models.CASCADE,null=True,blank=True)
     BUDGET=models.ForeignKey(BudgetTable,on_delete=models.CASCADE,null=True,blank=True)
-    Date = models.DateTimeField(null=True, blank=True)
-    Income = models.FloatField(null=True, blank=True)
-    Expense = models.FloatField(null=True, blank=True)
-    Balance = models.FloatField(null=True, blank=True)
+    Date = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     Category = models.CharField(max_length=100,null=True,blank=True)
     Quantity = models.CharField(max_length=100,null=True,blank=True)
     Price = models.FloatField(null=True,blank=True)
+    total_expense=models.FloatField(null=True,blank=True)
     # def save(self, *args, **kwargs):
     #     # Calculate expense based on Price and Quantity
     #     try:
@@ -93,4 +91,3 @@ class NotificationTable(models.Model):
 
 
 
-   

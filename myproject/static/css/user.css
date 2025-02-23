@@ -1,59 +1,81 @@
-*{
-    padding: 0%;
-    margin: 0%;
-    box-sizing: border-box;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
+
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center; /* Center content both horizontally and vertically */
-    color: white;
-    background-color: #1B1C21;
-    overflow: hidden;
-    height: 100vh; /* Ensure body takes full viewport height */
-    margin: 0; /* Reset margin to prevent unwanted spacing */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Align content to top */
+  color: white;
+  background-color: #1B1C21;
+  overflow-y: auto; /* Enable scrolling */
+  height: auto;
+  min-height: 100vh;
+  margin: 0;
 }
 
-table{
-    
- background-color:transparent;
- width: 250px;   
-border-collapse: collapse;
-
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* Align content at the top */
+  min-height: 100vh; /* Allow content to grow */
+  width: 100%;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.1);
 }
-th,td{
-    text-align: center;
-    border: 1px solid black;
-    padding: 8px;
-}
- .container {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; /* Center content vertically */
-    min-height: 100vh; /* Take full viewport height */
-    background-color: rgba(0, 0, 0, 0.1);
-  }
-  .container:before {
-    content: "";
-    position: absolute;
-    left: -150%;
-    top: 0;
-    width: 300%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
-    transform: rotate(45deg);
-    z-index: -1;
-  } 
-  .btn
-  {
 
-    background-color:transparent;
-    border: 1px solid white;
-    color:white;
-padding: 8px;  }
-  .btn:hover{
-    background-color: white;
-    color: rgb(17, 17, 17);
-  }
+.container:before {
+  content: "";
+  position: absolute;
+  left: -150%;
+  top: 0;
+  width: 300%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  transform: rotate(45deg);
+  z-index: -1;
+}
+
+/* Table Styling */
+table {
+  background-color: transparent;
+  width: 300px;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  text-align: center;
+  border: 1px solid white;
+  padding: 10px;
+  color: white;
+}
+
+th {
+  background-color: rgba(255, 255, 255, 0.2); /* Slight contrast */
+}
+
+/* Button Styling */
+.btn {
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+  padding: 10px 20px;
+  margin-top: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background-color: white;
+  color: rgb(17, 17, 17);
+}
+
+/* Extra Content for Scrolling */
+.extra-content {
+  height: 150vh; /* Ensures scrolling effect */
+}
