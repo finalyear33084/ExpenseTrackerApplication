@@ -42,7 +42,7 @@
         cssClass: 'ms--links',
         range: [0, 3],
         rangeContent: function () {
-            return '<a class="ms-slide__link">About</a>';
+            return '<a class="ms-slide__link"> </a>';
         },
         vertical: true,
         interactive: false
