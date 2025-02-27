@@ -17,8 +17,6 @@ class UserTable(models.Model):
     Totalincome = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
 
 
-
-
 class ComplaintTable(models.Model):
     USER = models.ForeignKey(UserTable, on_delete=models.CASCADE)
     Complaint = models.CharField(max_length=500, null=True, blank=True)

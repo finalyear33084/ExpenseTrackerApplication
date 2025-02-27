@@ -27,7 +27,7 @@ class UpdateProfileSerializer(ModelSerializer):
 class UpdateProfilepasswordSerializer(ModelSerializer):
     class Meta:
         model = LoginTable
-        fields =['password']
+        fields =['Password']
 
 class ComplaintViewSerializer(ModelSerializer):
     class Meta:
